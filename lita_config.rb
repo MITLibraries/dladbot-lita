@@ -1,6 +1,6 @@
 Lita.configure do |config|
   # The name your robot will use.
-  config.robot.name = "Lita"
+  config.robot.name = "3po"
 
   # The locale code for the language to use.
   # config.robot.locale = :en
@@ -17,7 +17,9 @@ Lita.configure do |config|
 
   # The adapter you want to connect with. Make sure you've added the
   # appropriate gem to the Gemfile.
-  config.robot.adapter = :shell
+  config.robot.adapter = :slack
+  config.adapters.slack.token = ENV.fetch('SLACK_ADAPTER_TOKEN')
+  config.http.port = ENV["PORT"]
 
   ## Example: Set options for the chosen adapter.
   # config.adapter.username = "myname"
@@ -27,10 +29,12 @@ Lita.configure do |config|
   # config.redis.host = "127.0.0.1"
   # config.redis.port = 1234
 
+  config.redis[:url] = ENV["REDIS_URL"]
+
   ## Example: Set configuration for any loaded handlers. See the handler's
   ## documentation for options.
   # config.handlers.some_handler.some_config_key = "value"
 
-  config.handlers.google_images.google_cse_id = ENV['GOOGLE_CSE_ID']
-  config.handlers.google_images.google_cse_key = ENV['GOOGLE_CSE_KEY']
+  config.handlers.google_images.google_cse_id = ENV.fetch('GOOGLE_CSE_ID')
+  config.handlers.google_images.google_cse_key = ENV.fetch('GOOGLE_CSE_KEY')
 end
