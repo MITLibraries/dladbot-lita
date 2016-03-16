@@ -4,7 +4,6 @@ ruby '2.3.0'
 gem 'lita'
 gem 'lita-slack'
 
-gem 'lita-ai'
 gem 'lita-ascii-art'
 gem 'lita-google-images'
 gem 'lita-karma'
